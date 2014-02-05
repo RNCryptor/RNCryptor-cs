@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace RNCryptor
 {
@@ -10,16 +9,16 @@ namespace RNCryptor
 	{
 		private Schema defaultSchemaVersion = Schema.V2;
 
-		public string encrypt (string plaintext, string password)
+		public string Encrypt (string plaintext, string password)
 		{
-			return this.encrypt (plaintext, password, this.defaultSchemaVersion);
+			return this.Encrypt (plaintext, password, this.defaultSchemaVersion);
 		}
 
-		public string encrypt (string plaintext, string password, Schema schemaVersion)
+		public string Encrypt (string plaintext, string password, Schema schemaVersion)
 		{
 			this.configureSettings (schemaVersion);
 
-			byte[] plaintextBytes = Encoding.UTF8.GetBytes (plaintext);
+            byte[] plaintextBytes = TextEncoding.GetBytes(plaintext);
 
 			PayloadComponents components = new PayloadComponents();
 			components.schema = new byte[] {(byte)schemaVersion};

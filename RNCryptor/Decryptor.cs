@@ -9,7 +9,7 @@ namespace RNCryptor
 	public class Decryptor : Cryptor
 	{
 
-		public string decrypt (string encryptedBase64, string password)
+		public string Decrypt (string encryptedBase64, string password)
 		{
 			PayloadComponents components = this.unpackEncryptedBase64Data (encryptedBase64);
 
@@ -54,7 +54,7 @@ namespace RNCryptor
 				}
 			}
 
-			return Encoding.ASCII.GetBytes (plaintext);
+            return TextEncoding.GetBytes(plaintext);
 		}
 
 		private PayloadComponents unpackEncryptedBase64Data (string encryptedBase64)
