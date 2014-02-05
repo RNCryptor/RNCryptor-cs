@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace RNCryptor
 {
-	public enum Schema : short {V0, V1, V2};
+	public enum Schema : short {V0, V1, V2, V3};
 	public enum AesMode : short {CTR, CBC};
 	public enum Pbkdf2Prf : short {SHA1};
 	public enum HmacAlgorithm : short {SHA1, SHA256};
@@ -40,33 +40,44 @@ namespace RNCryptor
 		protected const short pbkdf2_keyLength = 32;
 		protected const short hmac_length = 32;
 
+        /// <summary>
+        ///Gets or sets the Encoding
+        /// </summary>
+        public Encoding TextEncoding { set; get; }
+
+	    public Cryptor()
+	    {
+            // set default encoding for UTF8
+	        TextEncoding = Encoding.UTF8;
+	    }
+
 		protected void configureSettings(Schema schemaVersion)
 		{
 			switch (schemaVersion) {
+			    case Schema.V0:
+				    aesMode = AesMode.CTR;
+				    options = Options.V0;
+				    hmac_includesHeader = false;
+				    hmac_includesPadding = true;
+				    hmac_algorithm = HmacAlgorithm.SHA1;
+				    break;
 				
-			case Schema.V0:
-				aesMode = AesMode.CTR;
-				options = Options.V0;
-				hmac_includesHeader = false;
-				hmac_includesPadding = true;
-				hmac_algorithm = HmacAlgorithm.SHA1;
-				break;
+			    case Schema.V1:
+				    aesMode = AesMode.CBC;
+				    options = Options.V1;
+				    hmac_includesHeader = false;
+				    hmac_includesPadding = false;
+				    hmac_algorithm = HmacAlgorithm.SHA256;
+				    break;
 				
-			case Schema.V1:
-				aesMode = AesMode.CBC;
-				options = Options.V1;
-				hmac_includesHeader = false;
-				hmac_includesPadding = false;
-				hmac_algorithm = HmacAlgorithm.SHA256;
-				break;
-				
-			case Schema.V2:
-				aesMode = AesMode.CBC;
-				options = Options.V1;
-				hmac_includesHeader = true;
-				hmac_includesPadding = false;
-				hmac_algorithm = HmacAlgorithm.SHA256;
-				break;
+			    case Schema.V2:
+                case Schema.V3:
+				    aesMode = AesMode.CBC;
+				    options = Options.V1;
+				    hmac_includesHeader = true;
+				    hmac_includesPadding = false;
+				    hmac_algorithm = HmacAlgorithm.SHA256;
+				    break;
 			}
 		}
 
