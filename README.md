@@ -5,6 +5,11 @@ C# implementation of Rob Napier's RNCryptor
 
 **Note:** This codebase is in early alpha stage. Don't expect it to do much yet.
 
+**Note:** This project was forked from [here](https://github.com/RNCryptor/RNCryptor-cs)
+
+**Changes:** The main change is, you can encrypt any byte array now, not just strings.
+Byte arrays can be encrypted multiple times and still be decrypted.
+
 This project was developed using Mono on Mac OSX. Its compatibility with Windows
 platforms is presently unknown.
 
