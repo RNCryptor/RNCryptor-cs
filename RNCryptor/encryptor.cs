@@ -9,16 +9,15 @@ namespace RNCryptor
 	{
 		private Schema defaultSchemaVersion = Schema.V2;
 
-		public string Encrypt (string plaintext, string password)
+		public byte[] Encrypt (byte[] plainBytes, string password)
 		{
-			return this.Encrypt (plaintext, password, this.defaultSchemaVersion);
+			return this.Encrypt (plainBytes, password, this.defaultSchemaVersion);
 		}
 
-		public string Encrypt (string plaintext, string password, Schema schemaVersion)
+		public byte[] Encrypt (byte[] plainBytes, string password, Schema schemaVersion)
 		{
 			this.configureSettings (schemaVersion);
-
-            byte[] plaintextBytes = TextEncoding.GetBytes(plaintext);
+            
 
 			PayloadComponents components = new PayloadComponents();
 			components.schema = new byte[] {(byte)schemaVersion};
@@ -31,11 +30,11 @@ namespace RNCryptor
 
 			switch (this.aesMode) {
 				case AesMode.CTR:
-					components.ciphertext = this.encryptAesCtrLittleEndianNoPadding(plaintextBytes, key, components.iv);
+					components.ciphertext = this.encryptAesCtrLittleEndianNoPadding(plainBytes, key, components.iv);
 					break;
 					
 				case AesMode.CBC:
-					components.ciphertext = this.encryptAesCbcPkcs7(plaintextBytes, key, components.iv);
+					components.ciphertext = this.encryptAesCbcPkcs7(plainBytes, key, components.iv);
 					break;
 			}
 
@@ -46,7 +45,7 @@ namespace RNCryptor
 			binaryBytes.AddRange (components.ciphertext);
 			binaryBytes.AddRange (components.hmac);
 
-			return Convert.ToBase64String(binaryBytes.ToArray());
+            return binaryBytes.ToArray();
 		}
 
 		private byte[] encryptAesCbcPkcs7 (byte[] plaintext, byte[] key, byte[] iv)
