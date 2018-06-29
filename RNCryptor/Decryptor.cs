@@ -11,7 +11,7 @@ namespace RNCryptor
         
         public byte[] Decrypt(byte[] encryptedBytes, string password)
         {
-            PayloadComponents components = this.unpackEncryptedBase64Data(encryptedBytes);
+            PayloadComponents components = this.unpackEncryptedData(encryptedBytes);
 
             if (!this.hmacIsValid(components, password))
             {
@@ -47,7 +47,7 @@ namespace RNCryptor
             byte[] plainBytes;
             using (MemoryStream msDecrypt = new MemoryStream())
             {
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
                 {
                     csDecrypt.Write(encrypted, 0, encrypted.Length);
                     csDecrypt.FlushFinalBlock();
@@ -58,7 +58,7 @@ namespace RNCryptor
             return plainBytes;
         }
 
-        private PayloadComponents unpackEncryptedBase64Data(byte[] encryptedBytes)
+        private PayloadComponents unpackEncryptedData(byte[] encryptedBytes)
         {
             List<byte> binaryBytes = new List<byte>();
             binaryBytes.AddRange(encryptedBytes);

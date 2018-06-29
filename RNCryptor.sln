@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNCryptor", "RNCryptor\RNCryptor.csproj", "{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rncrypt", "rncrypt\rncrypt.csproj", "{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +27,24 @@ Global
 		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|x86.ActiveCfg = Release|x86
 		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|x86.Build.0 = Release|x86
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|x86.Build.0 = Debug|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CCE5E57-1DEC-4D97-B7D4-7AF7B6655CE8}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = RNCryptor.csproj
