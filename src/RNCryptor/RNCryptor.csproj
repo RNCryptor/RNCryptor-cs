@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>RNCryptor</RootNamespace>
+    <AssemblyName>RNCryptor</AssemblyName>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+</Project>

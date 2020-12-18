@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Text;
 
 namespace RNCryptor.Test
 {
@@ -89,18 +90,15 @@ namespace RNCryptor.Test
 
         private void testCannotUseWithUnsupportedSchemaVersions()
         {
-
-            Encryptor encryptor = new Encryptor();
-            string encryptedB64 = encryptor.Encrypt(TestStrings.SAMPLE_PLAINTEXT, TestStrings.SAMPLE_PASSWORD_A);
-
-            byte[] encrypted = Convert.FromBase64String(encryptedB64);
+            var encryptor = new Encryptor();
+            byte[] encrypted = encryptor.Encrypt(Encoding.ASCII.GetBytes(TestStrings.SAMPLE_PLAINTEXT), TestStrings.SAMPLE_PASSWORD_A);
             encrypted[0] = 0x03;
-            string encryptedV3 = Convert.ToBase64String(encrypted);
-
-            Decryptor decryptor = new Decryptor();
-            string decrypted = decryptor.Decrypt(encryptedV3, TestStrings.SAMPLE_PASSWORD_A);
-
-            this.reportSuccess(MethodBase.GetCurrentMethod().Name, decrypted == "");
+            
+            
+            var decryptor = new Decryptor();
+            byte[] decrypted = decryptor.Decrypt(encrypted, TestStrings.SAMPLE_PASSWORD_A);
+            
+            this.reportSuccess(MethodBase.GetCurrentMethod().Name, decrypted == null || decrypted.Length == 0);
         }
 
         // Decryptor Tests
@@ -161,10 +159,10 @@ namespace RNCryptor.Test
 
         private void testDecryptingWithBadPasswordFails()
         {
-            Decryptor cryptor = new Decryptor();
-            string decrypted = cryptor.Decrypt(TestStrings.IOS_ENCRYPTED_V2_NON_BLOCK_INTERVAL, "bad-password");
+            var cryptor = new Decryptor();
+            byte[] decrypted = cryptor.Decrypt(Encoding.ASCII.GetBytes(TestStrings.IOS_ENCRYPTED_V2_NON_BLOCK_INTERVAL), "bad-password");
 
-            this.reportSuccess(MethodBase.GetCurrentMethod().Name, decrypted == "");
+            this.reportSuccess(MethodBase.GetCurrentMethod().Name, decrypted == null || decrypted.Length == 0);
         }
 
         // Encryptor Tests
@@ -206,68 +204,57 @@ namespace RNCryptor.Test
 
         private void performSymmetricTest(string functionName, string plaintext, string password)
         {
-            Encryptor encryptor = new Encryptor();
-            string encryptedB64 = encryptor.Encrypt(plaintext, password);
+            var encryptor = new Encryptor();
+            byte[] encrypted = encryptor.Encrypt(Encoding.ASCII.GetBytes(plaintext), password);
 
-            Decryptor decryptor = new Decryptor();
-            string decrypted = decryptor.Decrypt(encryptedB64, password);
-
-            this.reportSuccess(functionName, decrypted == plaintext);
+            var decryptor = new Decryptor();
+            byte[] decrypted = decryptor.Decrypt(encrypted, password);
+            
+            this.reportSuccess(functionName, decrypted != null && Encoding.ASCII.GetString(decrypted) == plaintext);
         }
 
         private void performSymmetricTestWithExplicitSchema(string functionName, string plaintext, string password, Schema schemaVersion)
         {
-            Encryptor encryptor = new Encryptor();
-            string encryptedB64 = encryptor.Encrypt(plaintext, password, schemaVersion);
+            var encryptor = new Encryptor();
+            byte[] encrypted = encryptor.Encrypt(Encoding.ASCII.GetBytes(plaintext), password, schemaVersion);
 
-            Decryptor decryptor = new Decryptor();
-            string decrypted = decryptor.Decrypt(encryptedB64, password);
+            var decryptor = new Decryptor();
+            byte[] decrypted = decryptor.Decrypt(encrypted, password);
 
-            this.reportSuccess(functionName, decrypted == plaintext);
+            this.reportSuccess(functionName, decrypted != null && Encoding.ASCII.GetString(decrypted) == plaintext);
         }
 
         private void performDecryptionTest(string functionName, string encrypted, string expected, string password)
         {
-            Decryptor cryptor = new Decryptor();
-            string decrypted = cryptor.Decrypt(encrypted, password);
+            var decryptor = new Decryptor();
+            byte[] decrypted = decryptor.Decrypt(Encoding.ASCII.GetBytes(encrypted), password);
 
-            this.reportSuccess(functionName, decrypted == expected);
+            this.reportSuccess(functionName,  decrypted != null && Encoding.ASCII.GetString(decrypted) == expected);
         }
 
         private void performEncryptionTest(string functionName, string plaintext, string password)
         {
-            Encryptor cryptor = new Encryptor();
-            string encrypted = cryptor.Encrypt(plaintext, password);
+            var cryptor = new Encryptor();
+            byte[] encrypted = cryptor.Encrypt(Encoding.ASCII.GetBytes(plaintext), password);
 
-            this.reportSuccess(functionName, encrypted != "" && encrypted != plaintext);
+            this.reportSuccess(functionName, encrypted != null && encrypted.Length > 0);
         }
 
         private void performEncryptionTestWithExplicitSchema(string functionName, string plaintext, string password, Schema schemaVersion)
         {
-            Encryptor cryptor = new Encryptor();
-            string encrypted = cryptor.Encrypt(plaintext, password, schemaVersion);
+            var cryptor = new Encryptor();
+            byte[] encrypted = cryptor.Encrypt(Encoding.ASCII.GetBytes(plaintext), password, schemaVersion);
 
-            this.reportSuccess(functionName, encrypted != "" && encrypted != plaintext);
+            this.reportSuccess(functionName, encrypted != null && encrypted.Length > 0);
         }
 
         private void performEncryptionTestWithSchemaCheck(string functionName, string plaintext, string password, Schema schemaVersion)
         {
-            Encryptor cryptor = new Encryptor();
-            string encryptedB64 = cryptor.Encrypt(plaintext, password, schemaVersion);
-            byte[] encrypted = Convert.FromBase64String(encryptedB64);
-
+            var cryptor = new Encryptor();
+            byte[] encrypted = cryptor.Encrypt(Encoding.ASCII.GetBytes(plaintext), password, schemaVersion);
+           
             Schema actualSchemaVersion = (Schema)encrypted[0];
             this.reportSuccess(functionName, actualSchemaVersion == schemaVersion);
-        }
-
-        protected string hex_encode(byte[] input)
-        {
-            string hex = "";
-            foreach (byte c in input)
-            {
-                hex += String.Format("{0:x2}", c);
-            }
-            return hex;
         }
 
         private void reportSuccess(string functionName, bool success)
@@ -277,7 +264,6 @@ namespace RNCryptor.Test
             {
                 this.passedTests++;
                 statusText = "OK";
-
             }
             else
             {

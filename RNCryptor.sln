@@ -1,52 +1,71 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNCryptor", "RNCryptor\RNCryptor.csproj", "{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}"
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1C4D2E74-63C2-4446-87E5-B093DAC09D13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rncrypt", "rncrypt\rncrypt.csproj", "{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNCryptor", "src\RNCryptor\RNCryptor.csproj", "{90D46753-71EA-41C0-9015-A45B96F04143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rncrypt", "src\rncrypt\rncrypt.csproj", "{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4838EBCC-7FAC-4C30-877D-ACD89D189A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNCryptor.Test", "test\RNCryptor.Test\RNCryptor.Test.csproj", "{3EE99964-B31B-44B7-84DD-760C6A147105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Debug|x86.ActiveCfg = Debug|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Debug|x86.Build.0 = Debug|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|Any CPU.ActiveCfg = Release|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|Mixed Platforms.Build.0 = Release|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|x86.ActiveCfg = Release|x86
-		{D81E4ED0-1EE0-4B8B-9A8D-568201120CB3}.Release|x86.Build.0 = Release|x86
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Debug|x86.Build.0 = Debug|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|x86.ActiveCfg = Release|Any CPU
-		{7C3B76CB-E5DD-4FD7-95C5-E88F6ACFAD59}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2CCE5E57-1DEC-4D97-B7D4-7AF7B6655CE8}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|x64.Build.0 = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Debug|x86.Build.0 = Debug|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|x64.ActiveCfg = Release|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|x64.Build.0 = Release|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|x86.ActiveCfg = Release|Any CPU
+		{90D46753-71EA-41C0-9015-A45B96F04143}.Release|x86.Build.0 = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|x64.Build.0 = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Debug|x86.Build.0 = Debug|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|x64.ActiveCfg = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|x64.Build.0 = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|x86.ActiveCfg = Release|Any CPU
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A}.Release|x86.Build.0 = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|x64.Build.0 = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Debug|x86.Build.0 = Debug|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|x64.ActiveCfg = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|x64.Build.0 = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|x86.ActiveCfg = Release|Any CPU
+		{3EE99964-B31B-44B7-84DD-760C6A147105}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = RNCryptor.csproj
+	GlobalSection(NestedProjects) = preSolution
+		{90D46753-71EA-41C0-9015-A45B96F04143} = {1C4D2E74-63C2-4446-87E5-B093DAC09D13}
+		{2CC4CE25-7BD0-4412-9DE1-680BFBCB913A} = {1C4D2E74-63C2-4446-87E5-B093DAC09D13}
+		{3EE99964-B31B-44B7-84DD-760C6A147105} = {4838EBCC-7FAC-4C30-877D-ACD89D189A7D}
 	EndGlobalSection
 EndGlobal

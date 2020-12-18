@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\RNCryptor\RNCryptor.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>RNCryptor.Test</RootNamespace>
+    <AssemblyName>RNCryptor.Test</AssemblyName>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
+
+</Project>
